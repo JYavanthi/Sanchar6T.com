@@ -1,0 +1,34 @@
+# version: 1
+# frontend:
+#   phases:
+#     preBuild:
+#       commands:
+#         - cd Sanchar6T       # move into frontend folder
+#         - npm ci             # install dependencies
+#     build:
+#       commands:
+#         - npm run build      # build React app
+#   artifacts:
+#     baseDirectory: Sanchar6T/dist  # Vite build output folder
+#     files:
+#       - '**/*'
+#   cache:
+#     paths:
+#       - Sanchar6T/node_modules/**/*  # cache dependencies
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - cd Sanchar6T       # move into frontend folder
+        - npm ci             # install dependencies
+    build:
+      commands:
+        - npm run build      # build React app
+  artifacts:
+    baseDirectory: Sanchar6T/dist  # Vite build output folder
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - Sanchar6T/node_modules/**/*  # cache dependencies

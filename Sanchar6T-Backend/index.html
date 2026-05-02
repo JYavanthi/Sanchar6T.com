@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sanchar6T Travel Payment</title>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+      width: 350px;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    select, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      background: #3399cc;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #287aa6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Sanchar6T Travel Payment</h2>
+    <label for="package">Select Package:</label>
+    <select id="package">
+      <option value="500">Tirupati Round Trip - ₹500</option>
+      <option value="6000">Tirupati Kalahasti - ₹6000</option>
+      <option value="4500">Student Trip - ₹4500</option>
+      <option value="3500">Corporate Tours - ₹3500</option>
+      <option value="25000">Event Trip - ₹25000</option>
+    </select>
+    <button id="payBtn">Pay Now</button>
+  </div>
+
+  <script>
+    document.getElementById("payBtn").onclick = async function () {
+      const amount = document.getElementById("package").value;
+
+      try {
+        // 1. Create order from backend
+        const res = await fetch("http://localhost:5001/create-order", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ amount })
+        });
+        const order = await res.json();
+
+        // 2. Configure Razorpay checkout
+        const options = {
+          key: "rzp_test_RJLft75fL2W2QP", 
+          amount: order.amount,
+          currency: order.currency,
+          name: "Sanchar6T Travel",
+          description: "Booking Payment",
+          order_id: order.id,
+          handler: async function (response) {
+            const verifyRes = await fetch("http://localhost:5001/verify-payment", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(response)
+            });
+            const result = await verifyRes.json();
+            alert(result.message);
+          },
+          theme: { color: "#3399cc" }
+        };
+
+        const rzp = new Razorpay(options);
+        rzp.open();
+      } catch (err) {
+        console.error(err);
+        alert("Error while starting payment");
+      }
+    };
+  </script>
+</body>
+</html>

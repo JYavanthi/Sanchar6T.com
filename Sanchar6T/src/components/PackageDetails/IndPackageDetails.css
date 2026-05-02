@@ -1,0 +1,1016 @@
+.tirupati-page {
+  width: 100%;
+  background: #ffffff;
+  padding: 14px 0 40px;
+  font-family: Arial, sans-serif;
+}
+
+.tirupati-container {
+  width: 94%;
+  max-width: 1700px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 2.1fr) minmax(300px, 0.95fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.T-hero-left,
+.T-hero-right {
+  width: 100%;
+}
+
+.package-breadcrumb {
+  font-size: 22px;
+  color: #245ca8;
+  margin: 0 40px 12px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f2f79;
+  margin: 0 40px 14px;
+  line-height: 1.35;
+}
+
+
+.gallery-wrap {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 2px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ffffff;
+  margin-bottom: 14px;
+}
+
+.gallery-left-big {
+  width: 100%;
+}
+
+.gallery-main-img {
+  width: 100%;
+  height: 365px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-right-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.gallery-small-card {
+  position: relative;
+  width: 100%;
+  height: 181.5px;
+  overflow: hidden;
+}
+
+.gallery-small-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-view-btn {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  border: none;
+  background: #ffffff;
+  color: #0f2f79;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* INLINE AVAILABILITY */
+.availability-inline-wrap {
+  margin: 8px 0 18px;
+}
+
+.gallery-availability-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.availability-modal-heading {
+  font-size: 23px;
+  color: #111111;
+  margin: 0;
+  font-weight: 500;
+}
+
+.availability-close-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: #333333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.availability-option-card {
+  border: 1.5px solid #2d6df6;
+  border-radius: 16px;
+  background: #ffffff;
+  padding: 18px 24px;
+}
+
+.availability-option-card h3 {
+  font-size: 20px;
+  color: #123684;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.availability-option-top {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.availability-mini-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #1b2854;
+  font-size: 13px;
+}
+
+.availability-pickup-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.availability-pickup-row h4 {
+  font-size: 16px;
+  margin: 0 0 3px;
+  color: #16357c;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.availability-pickup-row p {
+  margin: 0;
+  color: #444444;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.availability-divider {
+  width: 100%;
+  height: 1px;
+  background: #dddddd;
+  margin: 14px 0;
+}
+
+.availability-starting-block {
+  margin-bottom: 2px;
+}
+
+.starting-label {
+  margin: 0 0 4px;
+  font-size: 12px;
+  color: #666666;
+}
+
+.starting-date {
+  margin: 0 0 6px;
+  font-size: 16px;
+  color: #333333;
+}
+
+.starting-hour {
+  margin: 0;
+  font-size: 20px;
+  color: #0f2f79;
+  font-weight: 500;
+}
+
+.availability-rules {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.availability-rules p {
+  margin: 0;
+  font-size: 16px;
+  color: #2a2a2a;
+}
+
+.availability-bottom-row {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.availability-bottom-price {
+  font-size: 21px;
+  color: #0f2f79;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.availability-bottom-row p {
+  margin: 0;
+  font-size: 16px;
+  color: #444444;
+}
+
+.book-now-btn {
+  min-width: 120px;
+  height: 40px;
+  border-radius: 24px;
+  border: 1.5px solid #2d6df6;
+  background: #ffffff;
+  color: #2d6df6;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+.hero-description {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #111111;
+  margin: 16px 0 20px;
+}
+
+
+.highlights-section h2,
+.section-heading,
+.day-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111111;
+  margin: 0 0 14px;
+}
+
+.highlights-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.highlight-icon {
+  width: 10px;
+  min-width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #0f4e7d;
+  margin-top: 6px;
+}
+
+.highlight-item p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #111111;
+}
+
+
+.itinerary-section {
+  margin-bottom: 24px;
+}
+
+.itinerary-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.itinerary-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 750px;
+}
+
+.itinerary-table th,
+.itinerary-table td {
+  border: 1px solid #dddddd;
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 18px;
+  vertical-align: top;
+  width: fit-content;
+}
+
+.itinerary-table th {
+  background: #f4f7fb;
+  color: #123684;
+  font-weight: 700;
+}
+
+.day-details-section {
+  margin-bottom: 24px;
+}
+
+.day1-content {
+  background: #ffffff;
+}
+
+.day1-points {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.day1-points li {
+  margin-bottom: 12px;
+}
+
+.day1-points li p {
+  margin: 6px 0 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #222222;
+}
+
+
+.T-hero-right {
+     display: flex;
+    flex-direction: column;
+    gap: 18px;
+    /* margin-top: 93px; */
+}
+
+.availability-card {
+  border: 1px solid #d8d8d8;
+  border-radius: 16px;
+  background: #ffffff;
+  padding: 14px 14px 12px;
+}
+
+.availability-from {
+  margin: 0 0 2px;
+  font-size: 13px;
+  color: #555555;
+}
+
+.availability-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.availability-price-row h2 {
+  margin: 0;
+  font-size: 36px;
+  color: #10398f;
+  font-weight: 700;
+}
+
+.availability-price-row span {
+  font-size: 18px;
+  color: #333333;
+}
+
+.availability-select-box {
+  width: 100%;
+  min-height: 40px;
+  border-radius: 20px;
+  background: #eef2f7;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  color: #16357c;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.check-availability-btn {
+  width: 100%;
+  height: 40px;
+  border-radius: 24px;
+  border: 2px solid #111111;
+  background: #1f73f1;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 6px 0 14px;
+}
+
+.availability-features {
+  border-top: 1px solid #dddddd;
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.availability-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #0c7a39;
+}
+
+.availability-feature-item h4 {
+  margin: 0 0 3px;
+  font-size: 13px;
+  color: #111111;
+  font-weight: 600;
+}
+
+.availability-feature-item p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.45;
+  color: #444444;
+}
+
+.availability-input-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.availability-field-input {
+  width: 60px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: #16357c;
+  font-weight: 600;
+}
+
+.availability-date-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+  color: #16357c;
+  font-weight: 600;
+  font-family: Arial, sans-serif;
+}
+
+.availability-field-input::-webkit-outer-spin-button,
+.availability-field-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* .availability-field-input[type="number"] {
+  -moz-appearance: textfield;
+} */
+.tour-list-card {
+  background: #efeded;
+  border-radius: 14px;
+  padding: 14px 12px;
+}
+
+.tour-list-card h2 {
+  font-size: 23px;
+  font-weight: 700;
+  color: #111111;
+  line-height: 1.4;
+  margin: 0 0 14px;
+}
+
+.tour-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tour-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.tour-img {
+  width: 94px;
+  height: 94px;
+  object-fit: cover;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.tour-content h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: #111111;
+  line-height: 1.2;
+}
+
+.tour-content p {
+  font-size: 15px;
+  color: #333333;
+  line-height: 1.2;
+  margin: 0;
+}
+
+
+.reviews-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 8px 45px;
+      gap: 25px;
+        display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.reviews-title {
+ font-size: 30px;
+    font-weight: 700;
+    color: #111111;
+    margin: 0 0 18px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.review-item {
+  margin-bottom: 26px;
+ 
+}
+
+.review-top {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.review-avatar {
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  border-radius: 50%;
+  background: #1b87b9;
+  color: #ffffff;
+  font-size: 34px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-content h3 {
+  margin: 0 0 2px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #111111;
+}
+
+.review-location {
+  margin: 0 0 4px;
+  font-size: 18px;
+  color: #555555;
+}
+
+.review-stars {
+  font-size: 25px;
+  color: #f4b400;
+  letter-spacing: 1px;
+}
+
+.review-text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #333333;
+}
+
+.mobile-availability-inline {
+  display: none;
+}
+
+.desktop-availability-inline {
+  display: block;
+}
+.mobile-package-heading {
+  display: none;
+}
+
+.mobile-gallery-actions,
+.mobile-gallery-bottom{
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .tirupati-page {
+    padding: 0 0 80px;
+    background: #ffffff;
+  }
+
+  .package-heading-block {
+    display: none;
+  }
+
+  .mobile-package-heading {
+    display: block;
+    width: 92%;
+    margin: 12px auto 14px;
+  }
+
+  .package-breadcrumb {
+    font-size: 14px;
+    color: #13264b;
+    margin:12px 19px 6px;
+    line-height: 1.4;
+  }
+
+  .page-title {
+   font-size: 26px;
+        line-height: 1.05;
+        color: #13264b;
+        font-weight: 800;
+        margin: 0px 19px 0px;
+  }
+
+  .tirupati-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .T-hero-left {
+    order: 1;
+    width: 100%;
+    margin: 0;
+  }
+
+  .T-hero-right {
+    order: 2;
+    width: 100%;
+    gap: 18px;
+  }
+
+ .gallery-wrap {
+    display: block !important;
+    width: 92%;
+    margin: 16px auto 10px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .gallery-left-big {
+    position: relative;
+    width: 100%;
+  }
+
+  .gallery-main-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: opacity 0.5s ease, transform 1s ease;
+  }
+
+  /* hide desktop grid */
+  .gallery-right-grid {
+    display: none !important;
+  }
+
+  /* ===== TOP ICONS ===== */
+  .mobile-gallery-actions {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    right: 14px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+  }
+
+  .mobile-gallery-right-actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  .mobile-gallery-circle {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  /* ===== BOTTOM DOTS ===== */
+  .mobile-gallery-bottom {
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .mobile-gallery-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .mobile-gallery-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.6);
+  }
+
+  .mobile-gallery-dot.active {
+    background: #ffffff;
+  }
+
+  /* ===== IMAGE COUNT BADGE ===== */
+  .mobile-gallery-count {
+    position: absolute;
+    right: 12px;
+    bottom: 10px;
+    background: rgba(0,0,0,0.45);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .desktop-availability-inline {
+    display: none !important;
+  }
+
+  .mobile-availability-inline {
+    display: block;
+    width: 92%;
+    margin: 6px auto 22px;
+  }
+
+  .hero-description {
+    width: 92%;
+    margin: 14px auto 20px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: #333333;
+  }
+
+  .highlights-section,
+  .itinerary-section,
+  .day-details-section {
+    width: 92%;
+    margin: 0 auto 24px;
+  }
+
+  .highlights-section h2,
+  .section-heading,
+  .day-title {
+    font-size: 22px;
+    color: #13264b;
+    font-weight: 800;
+  }
+
+  .highlight-item p,
+  .day1-points li p,
+  .itinerary-table th,
+  .itinerary-table td {
+    font-size: 14px;
+  }
+
+  .availability-card {
+    width: 92%;
+    margin: 10px auto 0;
+    background: #ffffff;
+    border-radius: 24px;
+    border: none;
+    padding: 22px 16px;
+    border: 1px solid #d8d8d8;
+  }
+
+  .availability-card::before {
+    content: "Select participants, date, and language";
+    display: block;
+    color: #13264b;
+    font-size: 23px;
+    line-height: 1.25;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .availability-from,
+  .availability-price-row,
+  .availability-features {
+    display: none;
+  }
+
+  .availability-select-box {
+    min-height: 48px;
+    border-radius: 999px;
+    background: #eef2f7;
+    color: #13264b;
+    font-size: 18px;
+    font-weight: 800;
+    padding: 0 18px;
+    margin-bottom: 14px;
+  }
+
+  .availability-select-box svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .availability-field-input,
+  .availability-date-input {
+        font-size: 16px;
+        font-weight: 600;
+        color: #13264b;
+        background: transparent;
+  }
+
+  .check-availability-btn {
+            width: 100%;
+        height: 43px;
+        border-radius: 999px;
+        border: none;
+        background: #0071eb;
+        color: white;
+        font-size: 18px;
+        font-weight: 800;
+        margin: 1px 0 0;
+  }
+
+  .gallery-availability-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px 0 14px;
+  }
+
+  .availability-modal-heading {
+    font-size: 25px;
+    font-weight: 800;
+    color: #13264b;
+    margin: 0;
+  }
+
+  .availability-option-card {
+    border: 2px solid #0071eb;
+    border-radius: 18px;
+    padding: 20px 16px;
+    background: #ffffff;
+  }
+
+  .availability-option-card h3 {
+    font-size: 22px;
+    line-height: 1.3;
+    color: #13264b;
+    font-weight: 800;
+  }
+
+  .tour-list-card {
+    width: 92%;
+    margin: 18px auto 0;
+    background: #ffffff;
+    padding: 0;
+  }
+
+  .tour-list-card h2 {
+    font-size: 24px;
+    color: #13264b;
+    font-weight: 800;
+  }
+
+  /* .tour-item {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 12px;
+    background: #ffffff;
+    border: 1px solid #e1e6ef;
+    border-radius: 16px;
+    padding: 10px;
+  }
+
+  .tour-img,
+  .tour-img.no-image-box {
+    width: 92px;
+    height: 92px;
+    border-radius: 12px;
+    object-fit: cover;
+  } */
+    .tour-item {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    align-items: stretch;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 16px;
+    border: 1px solid #e1e6ef;
+    background: #ffffff;
+  }
+
+  .tour-img,
+  .tour-img.no-image-box {
+    width: 115px;
+    height: 90px;
+    min-height: 90px;
+    border-radius: 14px;
+    object-fit: cover;
+  }
+
+  .tour-content {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .tour-content h3 {
+    font-size: 16px;
+    line-height: 1.22;
+    margin-bottom: 4px;
+  }
+
+  .tour-desc {
+    font-size: 13px;
+    line-height: 1.25;
+    margin: 0;
+    color: #333;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .tour-desc-expanded {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
+
+  .tour-read-more-btn {
+    width: fit-content;
+    border: none;
+    background: transparent;
+    color: #0f3b8f;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 3px 0;
+    cursor: pointer;
+  }
+
+  .tour-days-text {
+    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 800;
+  }
+.tour-content p{
+      font-size: 13px;
+    color: #333333;
+    line-height: 1.1;
+    margin: 0;
+}
+  .reviews-card {
+    width: 92%;
+    margin: 0 auto;
+    grid-template-columns: 1fr;
+    padding: 10px 0;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

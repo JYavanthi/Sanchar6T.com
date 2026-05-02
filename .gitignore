@@ -1,0 +1,16 @@
+# Ignore environment files anywhere in the project
+*.env
+
+# Ignore node_modules everywhere
+node_modules/
+
+# Ignore build/output
+dist/
+build/
+.out/
+.next/
+.vercel/
+
+# Logs
+*.log
+test.json
