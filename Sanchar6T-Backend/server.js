@@ -23,6 +23,7 @@ const PORT = 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use("/api/bitla", bitlaRoutes);
 
 
 const razorpay = new Razorpay({
@@ -1171,7 +1172,6 @@ app.post("/api/payment/create-order", async (req, res) => {
   }
 });
 
-app.use("/api/bitla", bitlaRoutes);
 app.use(errorHandler)
 
 const server = app.listen(PORT, () => {

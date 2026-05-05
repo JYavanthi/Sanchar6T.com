@@ -215,7 +215,7 @@ localStorage.setItem("bookingData", JSON.stringify(bookingData));
 
     // ✅ STEP 3: Call PhonePe API
 const res = await fetch(
-  `${API_URLS.API_BASE_URL}/api/payment/create-order`,
+  `${API_URLS.API_BASE_URL}/payment/create-order`,
   {
           method: "POST",
       headers: {

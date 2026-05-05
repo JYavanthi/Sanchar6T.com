@@ -97,10 +97,15 @@ const BusBookingDetails = () => {
         SavePassengerDetails: saveFlag,
       };
 
-const res = await axios.post(
-  `${API_URLS.API_BASE_URL}/api/bus-booking-seat`,
+      // const res = await axios.post(
+      //   "http://localhost:5000/bus-booking-seat",
+      //   payload
+      // );
+      const res = await axios.post(
+  `${API_URLS.API_BASE_URL}/bus-booking-seat`,
   payload
 );
+
       const data = res.data;
       console.log("🔥 API RESPONSE:", data);
 
