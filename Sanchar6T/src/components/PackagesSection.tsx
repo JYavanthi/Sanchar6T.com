@@ -132,6 +132,8 @@
 import { useEffect, useState } from "react";
 import { Calendar, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { API_URLS } from "../API-URLS";
+
 
 type PackageItem = {
   PackageID: number;
@@ -148,7 +150,7 @@ type PackageItem = {
   MediaId?: number | null;
 };
 
-const API_BASE_URL = "http://localhost:5000/api";
+// const API_BASE_URL = "http://localhost:5000/api";
 
 const PackagesSection = () => {
   const navigate = useNavigate();
@@ -166,8 +168,11 @@ const PackagesSection = () => {
       setLoading(true);
       setError("");
 
-      const response = await fetch(`${API_BASE_URL}/packages`);
-      const result = await response.json();
+      // const response = await fetch(`${API_BASE_URL}/packages`);
+      // const result = await response.json();
+
+      const response = await fetch(`${API_URLS.API_BASE_URL}/packages`);
+const result = await response.json();
 
       if (!response.ok || !result.success) {
         throw new Error(result.message || "Failed to fetch packages");
@@ -185,7 +190,7 @@ const PackagesSection = () => {
   // 🔥 ONLY DB IMAGE
   const getPackageImage = (pkg: PackageItem) => {
     if (pkg.MediaId) {
-      return `${API_BASE_URL}/view-image/${pkg.MediaId}`;
+      return `${API_URLS}/view-image/${pkg.MediaId}`;
     }
     return ""; // no fallback
   };
