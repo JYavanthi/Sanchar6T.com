@@ -48,8 +48,18 @@ const SearchForm = () => {
     enabled: Boolean(urlFromId),
   });
 
-  const originCities = originData?.data?.data ?? [];
-  const destinationCities = destData?.data?.data ?? [];
+  // const originCities = originData?.data?.data ?? [];
+  // const destinationCities = destData?.data?.data ?? [];
+
+  const originCities =
+  originData?.data?.data ||   // अगर nested है
+  originData?.data ||         // अगर direct array है
+  [];
+
+const destinationCities =
+  destData?.data?.data ||
+  destData?.data ||
+  [];
 
   const originCity = useMemo(() => {
     return originCities.find((c: any) => c.id === Number(urlFromId)) || null;
