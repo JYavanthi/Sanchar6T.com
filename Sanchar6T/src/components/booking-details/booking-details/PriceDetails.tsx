@@ -131,7 +131,7 @@
 // export default PriceDetails;
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
-
+import { API_URLS } from "../../../API-URLS";
 const PriceDetails = ({
   handleSubmit,
   travellerData,
@@ -214,8 +214,10 @@ const goToPayment = async (flag: "Y" | "N") => {
 localStorage.setItem("bookingData", JSON.stringify(bookingData));
 
     // ✅ STEP 3: Call PhonePe API
-    const res = await fetch("http://localhost:5000/api/payment/create-order", {
-      method: "POST",
+const res = await fetch(
+  `${API_URLS.API_BASE_URL}/api/payment/create-order`,
+  {
+          method: "POST",
       headers: {
         "Content-Type": "application/json",
       },

@@ -9,7 +9,7 @@ import PriceDetails from "@/components/booking-details/booking-details/PriceDeta
 import { useState } from "react";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast"; // import toast
-
+import { API_URLS } from "../API-URLS";
 const BusBookingDetails = () => {
   const [travellerData, setTravellerData] = useState<any[]>([]);
   const [contactData, setContactData] = useState<any>({});
@@ -97,11 +97,10 @@ const BusBookingDetails = () => {
         SavePassengerDetails: saveFlag,
       };
 
-      const res = await axios.post(
-        "http://localhost:5000/api/bus-booking-seat",
-        payload
-      );
-
+const res = await axios.post(
+  `${API_URLS.API_BASE_URL}/api/bus-booking-seat`,
+  payload
+);
       const data = res.data;
       console.log("🔥 API RESPONSE:", data);
 
