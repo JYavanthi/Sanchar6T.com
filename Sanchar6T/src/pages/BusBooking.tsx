@@ -329,8 +329,8 @@ const BusBooking = () => {
       <div className="mx-auto mt-4 flex w-full max-w-7xl flex-col gap-4 px-3 md:flex-row md:gap-6 md:px-4 xl:px-0">
         
         {/* SIDEBAR */}
-        <div className="w-full shrink-0 md:w-[280px] lg:w-[300px]">
-          <Sidebar />
+<div className="w-full shrink-0 bg-[#facc16] md:w-[280px] lg:w-[300px]">
+            <Sidebar />
         </div>
 
         {/* MAIN CONTENT */}

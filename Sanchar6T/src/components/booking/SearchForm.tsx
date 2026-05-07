@@ -48,18 +48,18 @@ const SearchForm = () => {
     enabled: Boolean(urlFromId),
   });
 
-  // const originCities = originData?.data?.data ?? [];
-  // const destinationCities = destData?.data?.data ?? [];
+  const originCities = originData?.data?.data ?? [];
+  const destinationCities = destData?.data?.data ?? [];
 
-  const originCities =
-  originData?.data?.data ||   // अगर nested है
-  originData?.data ||         // अगर direct array है
-  [];
+//   const originCities =
+//   originData?.data?.data ||   // अगर nested है
+//   originData?.data ||         // अगर direct array है
+//   [];
 
-const destinationCities =
-  destData?.data?.data ||
-  destData?.data ||
-  [];
+// const destinationCities =
+//   destData?.data?.data ||
+//   destData?.data ||
+//   [];
 
   const originCity = useMemo(() => {
     return originCities.find((c: any) => c.id === Number(urlFromId)) || null;
@@ -112,7 +112,7 @@ const destinationCities =
       {/* HEADER */}
       <div className="bg-[#273896] px-3 py-6 text-center text-white md:py-10">
         <h1 className="mb-4 text-xl font-semibold sm:text-2xl md:mb-6 md:text-3xl">
-          {originCity?.name || "Bangalore"} ➝ {destCity?.name || "Chennai"}
+          {originCity?.name || "Departure"} ➝ {destCity?.name || "Destination"}
         </h1>
 
         <div className="mx-auto flex max-w-5xl gap-4 overflow-x-auto px-4 pb-2 lg:justify-center md:justify-center min-[540px]:justify-center">

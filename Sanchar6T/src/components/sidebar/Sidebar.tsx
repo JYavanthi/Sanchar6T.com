@@ -961,8 +961,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="w-full rounded-xl bg-[#e8e3d3] p-3 md:w-[300px] md:rounded-none md:p-0">
-      <div className="mb-4 rounded-md bg-[#0b1a4a] p-4 text-white shadow-sm md:mb-5">
+<div className="mt-[10px] w-full rounded-xl bg-[#e8e3d3] p-3 md:w-[300px] md:rounded-none md:p-0">      {/* <div className="mb-4 rounded-md bg-[#0b1a4a] p-4 text-white shadow-sm md:mb-5">
         <h3 className="mb-3 text-base font-semibold md:text-lg">
           AI Powered Travel Assistant
         </h3>
@@ -973,10 +972,10 @@ const Sidebar = () => {
             className="flex-1 text-sm text-black outline-none placeholder:text-gray-400"
           />
         </div>
-      </div>
+      </div> */}
 
-      <div className="grid w-full grid-cols-2 gap-3 md:w-[280px]">
-        <div
+<div className="grid w-full grid-cols-2 gap-3 p-[10px] md:w-[280px]">
+          <div
           onClick={() => handleAC("ac")}
           className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border py-3 transition-all ${
             currentAC === "ac"

@@ -214,7 +214,7 @@ const goToPayment = async (flag: "Y" | "N") => {
 localStorage.setItem("bookingData", JSON.stringify(bookingData));
 
     // ✅ STEP 3: Call PhonePe API
-    const res = await fetch("https://sanchar6t.com/api/payment/create-order", {
+    const res = await fetch("http://localhost:5000/api/payment/create-order", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

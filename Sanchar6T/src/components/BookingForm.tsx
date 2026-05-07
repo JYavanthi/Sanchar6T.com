@@ -1,291 +1,5 @@
 
 
-
-
-// import { useState, useEffect, useRef } from "react";
-// import { Button } from "@/components/ui/button";
-// import { Users, ArrowUpDown, Search } from "lucide-react";
-// import { useNavigate } from "react-router-dom";
-
-// // images
-// import busImg from "@/assets/bus.png";
-// import cabImg from "@/assets/car.png";
-// import hotelImg from "@/assets/hotel.png";
-// import offerImg from "@/assets/special-offers.png";
-// import womenImg from "@/assets/women.png";
-
-// const womenImages = [
-//   "https://st.redbus.in/Images/INDOFFER/women/women1.svg",
-//   "https://st.redbus.in/Images/INDOFFER/women/women2.svg",
-//   "https://st.redbus.in/Images/INDOFFER/women/women3.svg",
-// ];
-
-// const BookingForm = () => {
-//   const navigate = useNavigate();
-
-//   const [activeTab, setActiveTab] = useState("BUSES");
-//   const [womenOnly, setWomenOnly] = useState(false);
-
-//   const [departure, setDeparture] = useState("");
-//   const [destination, setDestination] = useState("");
-//   const [leaving, setLeaving] = useState("2025-03-15");
-//   const [passengers, setPassengers] = useState(1);
-
-//   const [departureList, setDepartureList] = useState([]);
-//   const [destinationList, setDestinationList] = useState([]);
-
-//   const [showDepartureDropdown, setShowDepartureDropdown] = useState(false);
-//   const [showDestinationDropdown, setShowDestinationDropdown] = useState(false);
-
-//   const timeoutRef = useRef(null);
-
-
-
-
-//   const fetchLocations = (query, type) => {
-//     if (timeoutRef.current) {
-//       clearTimeout(timeoutRef.current);
-//     }
-
-//     timeoutRef.current = setTimeout(async () => {
-//       try {
-//         const res = await fetch(
-//           `http://localhost:5000/api/bitla/cities?search=${query}`
-//         );
-
-//         const data = await res.json();
-
-//         // ✅ GET DATA
-//         let list = (data.data || []).map((item) => ({
-//           id: item.id,
-//           name: item.name,
-//         }));
-
-//         // ✅ FILTER (IMPORTANT 🔥)
-//         if (query) {
-//           list = list.filter((item) =>
-//             item.name.toLowerCase().includes(query.toLowerCase())
-//           );
-//         }
-
-//         if (type === "departure") {
-//           setDepartureList(list);
-//           setShowDepartureDropdown(true);
-//         } else {
-//           setDestinationList(list);
-//           setShowDestinationDropdown(true);
-//         }
-//       } catch (err) {
-//         console.log(err);
-//       }
-//     }, 300);
-//   };
-
-//   const loadAllCities = async (type) => {
-//     try {
-//       const res = await fetch(
-//         `http://localhost:5000/api/bitla/cities?search=`
-//       );
-
-//       const data = await res.json();
-
-//       const list = (data.data || []).map((item) => ({
-//         id: item.id,
-//         name: item.name,
-//       }));
-
-//       if (type === "departure") {
-//         setDepartureList(list);
-//         setShowDepartureDropdown(true);
-//       } else {
-//         setDestinationList(list);
-//         setShowDestinationDropdown(true);
-//       }
-//     } catch (err) {
-//       console.log("LOAD ALL ERROR:", err);
-//     }
-//   };
-//   // ✅ close dropdown
-//   useEffect(() => {
-//     const handleClick = () => {
-//       setShowDepartureDropdown(false);
-//       setShowDestinationDropdown(false);
-//     };
-//     document.addEventListener("click", handleClick);
-//     return () => document.removeEventListener("click", handleClick);
-//   }, []);
-
-//   const swapLocations = () => {
-//     setDeparture(destination);
-//     setDestination(departure);
-//   };
-
-//   const tabs = [
-//     { id: "BUSES", img: busImg, label: "BUSES" },
-//     { id: "CABS", img: cabImg, label: "CABS" },
-//     { id: "HOTELS", img: hotelImg, label: "HOTELS" },
-//     { id: "SPECIAL_OFFERS", img: offerImg, label: "SPECIAL OFFERS" },
-//   ];
-
-//   return (
-//     <div className="relative -mt-20 z-10">
-//       <div className="max-w-[1200px] mx-auto px-4">
-//         <div className="bg-white rounded-2xl shadow-xl p-8 flex flex-col gap-6">
-
-//           {/* Tabs */}
-//           <div className="flex justify-between border-b pb-2">
-//             <div className="flex gap-3">
-//               {tabs.map((tab) => (
-//                 <button
-//                   key={tab.id}
-//                   onClick={() => setActiveTab(tab.id)}
-//                   className={`flex items-center gap-2 px-4 py-2 ${activeTab === tab.id
-//                     ? "text-blue-900 border-b-2 border-blue-900"
-//                     : "text-gray-600"
-//                     }`}
-//                 >
-//                   <img src={tab.img} className="w-5 h-5" />
-//                   {tab.label}
-//                 </button>
-//               ))}
-//             </div>
-
-//             {/* Women toggle */}
-//             <div className="flex items-center gap-2">
-//               <img src={womenImg} className="w-5 h-5" />
-//               <span className="text-blue-900 font-semibold">WOMEN</span>
-//               <button
-//                 onClick={() => setWomenOnly(!womenOnly)}
-//                 className={`w-12 h-6 rounded-full ${womenOnly ? "bg-blue-600" : "bg-gray-300"
-//                   }`}
-//               />
-//             </div>
-//           </div>
-
-//           {/* Booking Row */}
-//           <div className="flex gap-4 flex-wrap">
-
-//             {/* ✅ DEPARTURE */}
-//             <div className="relative">
-//               <input
-//                 value={departure}
-//                 placeholder="Departure"
-//                 onClick={(e) => {
-//                   e.stopPropagation();
-//                   loadAllCities("departure"); // ✅ LOAD ALL ON CLICK
-//                 }}
-//                 onChange={(e) => {
-//                   setDeparture(e.target.value);
-//                   fetchLocations(e.target.value, "departure");
-//                 }}
-//                 className="bg-gray-100 px-4 py-3 rounded-lg"
-//               />
-
-//               {showDepartureDropdown && (
-//                 <div className="absolute bg-white shadow-lg w-full mt-1 rounded max-h-60 overflow-auto z-50">
-//                   {departureList.length > 0 ? (
-//                     departureList.map((item, i) => (
-//                       <div
-//                         key={i}
-//                         onClick={(e) => {
-//                           e.stopPropagation();
-//                           setDeparture(item.name);            // ✅ SET VALUE
-//                           setShowDepartureDropdown(false);    // ✅ CLOSE DROPDOWN
-//                         }}
-//                         className="p-2 hover:bg-gray-100 cursor-pointer"
-//                       >
-//                         {item.name}
-//                       </div>
-//                     ))
-//                   ) : (
-//                     <div className="p-2 text-gray-400">Type to search...</div>
-//                   )}
-//                 </div>
-//               )}
-//             </div>
-
-//             {/* Swap */}
-//             <button onClick={swapLocations}>
-//               <ArrowUpDown />
-//             </button>
-
-//             {/* ✅ DESTINATION */}
-//             <div className="relative">
-//               <input
-//                 value={destination}
-//                 placeholder="Destination"
-//                 onClick={(e) => {
-//                   e.stopPropagation();
-//                   loadAllCities("destination"); // ✅ SAME AS DEPARTURE
-//                 }}
-//                 onChange={(e) => {
-//                   setDestination(e.target.value);
-//                   fetchLocations(e.target.value, "destination");
-//                 }}
-//                 className="bg-gray-100 px-4 py-3 rounded-lg"
-//               />
-
-//               {showDestinationDropdown && (
-//                 <div className="absolute bg-white shadow-lg w-full mt-1 rounded max-h-60 overflow-auto z-50">
-//                   {destinationList.length > 0 ? (
-//                     destinationList.map((item, i) => (
-//                       <div
-//                         key={i}
-//                         onClick={(e) => {
-//                           e.stopPropagation();
-//                           setDestination(item.name);
-//                           setShowDestinationDropdown(false);
-//                         }}
-//                         className="p-2 hover:bg-gray-100 cursor-pointer"
-//                       >
-//                         {item.name}
-//                       </div>
-//                     ))
-//                   ) : (
-//                     <div className="p-2 text-gray-400">Type to search...</div>
-//                   )}
-//                 </div>
-//               )}
-//             </div>
-
-//             {/* Date */}
-//             <input
-//               type="date"
-//               value={leaving}
-//               onChange={(e) => setLeaving(e.target.value)}
-//               className="bg-gray-100 px-4 py-3 rounded-lg"
-//             />
-
-//             {/* Passengers */}
-//             <input
-//               type="number"
-//               min={1}
-//               value={passengers}
-//               onChange={(e) =>
-//                 setPassengers(e.target.value ? Number(e.target.value) : 1)
-//               }
-//               className="bg-gray-100 px-4 py-3 rounded-lg w-24"
-//             />
-
-//             {/* Search */}
-//             <Button
-//               onClick={() =>
-//                 navigate("/bus-booking", {
-//                   state: { departure, destination, leaving, passengers },
-//                 })
-//               }
-//             >
-//               <Search />
-//             </Button>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default BookingForm;
-
 import React, { useEffect, useState } from "react";
 import { Users, ArrowUpDown, Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -303,6 +17,10 @@ import cabImg from "@/assets/car.png";
 import hotelImg from "@/assets/hotel.png";
 import offerImg from "@/assets/special-offers.png";
 import womenImg from "@/assets/women.png";
+import { useQuery } from "@tanstack/react-query";
+import BitlaRepository from "@/repositories/bitla.repository";
+import toOptions from "@/lib/toOptions.util";
+import { ComboboxDemo } from "@/components/ui/combo-box";
 
 type TabId = "BUSES" | "CABS" | "HOTELS" | "SPECIAL_OFFERS";
 
@@ -310,8 +28,8 @@ const BookingForm = () => {
   const [activeTab, setActiveTab] = useState<TabId>("BUSES");
   const [womenOnly, setWomenOnly] = useState(false);
 
-  const [departure, setDeparture] = useState("BENGALURU");
-  const [destination, setDestination] = useState("TIRUPATI");
+  // const [departure, setDeparture] = useState("BENGALURU");
+  // const [destination, setDestination] = useState("TIRUPATI");
   const [leaving, setLeaving] = useState("2025-03-15");
   const [returning, setReturning] = useState("2025-03-15");
   const [passengers, setPassengers] = useState(1);
@@ -321,8 +39,41 @@ const BookingForm = () => {
 
   const [showOffersPopup, setShowOffersPopup] = useState(false);
 
+  const [departure, setDeparture] = useState("");
+const [destination, setDestination] = useState("");
+
+const [departureId, setDepartureId] = useState("");
+const [destinationId, setDestinationId] = useState("");
   const navigate = useNavigate();
 
+  const { data: originData } = useQuery({
+  queryKey: ["origin-cities"],
+  queryFn: () => BitlaRepository.getOriginCities(),
+});
+
+const { data: destinationData } = useQuery({
+  queryKey: ["destination-cities", departureId],
+  queryFn: () =>
+    BitlaRepository.getDestinationCities(Number(departureId)),
+  enabled: Boolean(departureId),
+});
+
+const originCities = originData?.data?.data ?? [];
+const destinationCities = destinationData?.data?.data ?? [];
+
+const originOptions = toOptions(originCities, "id", "name").map((o) => ({
+  ...o,
+  value: String(o.value),
+}));
+
+const destinationOptions = toOptions(
+  destinationCities,
+  "id",
+  "name"
+).map((o) => ({
+  ...o,
+  value: String(o.value),
+}));
   useEffect(() => {
     if (showPopup) {
       const interval = setInterval(() => {
@@ -405,34 +156,68 @@ const BookingForm = () => {
             <div className="mt-5 flex flex-col gap-4 lg:flex-row lg:items-center">
 
   {/* ROUTE */}
-  <div className="flex w-full flex-col gap-3 rounded-[16px] bg-gray-100 px-4 py-4 md:flex-row md:items-center md:justify-between lg:flex-[1.4]">
-    
-    <div className="flex flex-1 flex-col text-center">
-      <span className="text-sm text-gray-500">Departure</span>
-      <input
-        value={departure}
-        onChange={(e) => setDeparture(e.target.value)}
-        className="w-full bg-transparent text-center text-lg font-bold text-blue-900 outline-none sm:text-xl"
-      />
-    </div>
+ <div className="flex w-full flex-col gap-3 rounded-[16px] bg-gray-100 px-4 py-4 md:flex-row md:items-center md:justify-between lg:flex-[1.4]">
 
-    <button
-      type="button"
-      onClick={swapLocations}
-      className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-blue-900 text-white md:mx-3"
-    >
-      <ArrowUpDown className="rotate-90" />
-    </button>
+  {/* Departure */}
+  <div className="flex flex-1 flex-col text-center">
+    <span className="text-sm text-gray-500">Departure</span>
 
-    <div className="flex flex-1 flex-col text-center">
-      <span className="text-sm text-gray-500">Destination</span>
-      <input
-        value={destination}
-        onChange={(e) => setDestination(e.target.value)}
-        className="w-full bg-transparent text-center text-lg font-bold text-blue-900 outline-none sm:text-xl"
-      />
-    </div>
+    <ComboboxDemo
+      options={originOptions}
+      value={departureId}
+      onValueChange={(v) => {
+        setDepartureId(v);
+
+        const selectedCity = originCities.find(
+          (city: any) => String(city.id) === v
+        );
+
+        setDeparture(selectedCity?.name || "");
+        setDestination("");
+        setDestinationId("");
+      }}
+      placeholder="Select Departure"
+    />
   </div>
+
+  {/* Swap */}
+  <button
+    type="button"
+    onClick={() => {
+      const tempDeparture = departure;
+      const tempDepartureId = departureId;
+
+      setDeparture(destination);
+      setDepartureId(destinationId);
+
+      setDestination(tempDeparture);
+      setDestinationId(tempDepartureId);
+    }}
+    className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-blue-900 text-white md:mx-3"
+  >
+    <ArrowUpDown className="rotate-90" />
+  </button>
+
+  {/* Destination */}
+  <div className="flex flex-1 flex-col text-center">
+    <span className="text-sm text-gray-500">Destination</span>
+
+    <ComboboxDemo
+      options={destinationOptions}
+      value={destinationId}
+      onValueChange={(v) => {
+        setDestinationId(v);
+
+        const selectedCity = destinationCities.find(
+          (city: any) => String(city.id) === v
+        );
+
+        setDestination(selectedCity?.name || "");
+      }}
+      placeholder="Select Destination"
+    />
+  </div>
+</div>
 
   {/* DATE */}
   <div className="flex w-full flex-col rounded-[16px] bg-gray-100 px-4 py-4 sm:flex-row lg:flex-[1.3]">
@@ -480,9 +265,23 @@ const BookingForm = () => {
     <button
       type="button"
       onClick={() =>
-        navigate("/bus-booking", {
-          state: { departure, destination, leaving, returning, passengers, womenOnly },
-        })
+        // navigate("/bus-booking", {
+        //   state: { departure, destination, leaving, returning, passengers, womenOnly },
+        // })
+
+        navigate(
+  `/bus-booking?from=${departureId}&to=${destinationId}&date=${leaving}`,
+  {
+    state: {
+      departure,
+      destination,
+      leaving,
+      returning,
+      passengers,
+      womenOnly,
+    },
+  }
+)
       }
       className="flex h-[62px] w-full items-center justify-center rounded-[16px] bg-blue-900 text-white hover:bg-blue-800 sm:w-[82px] lg:min-h-[84px]"
     >
