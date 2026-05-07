@@ -1068,7 +1068,7 @@ const [expandedTourIds, setExpandedTourIds] = useState<number[]>([]);
       setLoading(true);
       setError("");
 
-      const response = await fetch(`${API_URLS.API_BASE}/packages/${packageId}/full-details`);
+      const response = await fetch(`${API_URLS.API_BASE_URL}/packages/${packageId}/full-details`);
       const result = await response.json();
 
       if (!response.ok || !result.success) {
@@ -1096,7 +1096,7 @@ const toggleTourReadMore = (id: number) => {
 
   const fetchPackageImages = async () => {
     try {
-      const response = await fetch(`${API_URLS.API_BASE}/packages/${packageId}/images`);
+      const response = await fetch(`${API_URLS.API_BASE_URL}/packages/${packageId}/images`);
       const result = await response.json();
 
       if (!response.ok || !result.success) {
@@ -1107,7 +1107,7 @@ const toggleTourReadMore = (id: number) => {
       setGalleryImages(images);
 
       if (images.length > 0) {
-        setSelectedMainImage(`${API_URLS.API_BASE}/view-image/${images[0].MediaId}`);
+        setSelectedMainImage(`${API_URLS.API_BASE_URL}/view-image/${images[0].MediaId}`);
       } else {
         setSelectedMainImage("");
       }
@@ -1122,7 +1122,7 @@ const toggleTourReadMore = (id: number) => {
     try {
       setPackagesLoading(true);
 
-      const response = await fetch(`${API_URLS.API_BASE}/packages`);
+      const response = await fetch(`${API_URLS.API_BASE_URL}/packages`);
       const result = await response.json();
 
       if (!response.ok || !result.success) {
@@ -1140,7 +1140,7 @@ const toggleTourReadMore = (id: number) => {
 
   const getPackageImage = (tourPkg: PackageItem) => {
     if (tourPkg.MediaId) {
-      return `${API_URLS.API_BASE}/view-image/${tourPkg.MediaId}`;
+      return `${API_URLS.API_BASE_URL}/view-image/${tourPkg.MediaId}`;
     }
     return "";
   };
@@ -1313,7 +1313,7 @@ const toggleTourReadMore = (id: number) => {
                      key={currentIndex} 
                     src={
   galleryImages[currentIndex]
-    ? `${API_URLS.API_BASE}/view-image/${galleryImages[currentIndex].MediaId}`
+    ? `${API_URLS.API_BASE_URL}/view-image/${galleryImages[currentIndex].MediaId}`
     : selectedMainImage
 }
                     alt={pkg.PackageName}
@@ -1362,11 +1362,11 @@ const toggleTourReadMore = (id: number) => {
                     <div
                       className="gallery-small-card"
                       key={img.MediaId}
-                      onClick={() => setSelectedMainImage(`${API_URLS.API_BASE}/view-image/${img.MediaId}`)}
+                      onClick={() => setSelectedMainImage(`${API_URLS.API_BASE_URL}/view-image/${img.MediaId}`)}
                       style={{ cursor: "pointer" }}
                     >
                       <img
-                        src={`${API_URLS.API_BASE}/view-image/${img.MediaId}`}
+                        src={`${API_URLS.API_BASE_URL}/view-image/${img.MediaId}`}
                         alt={img.FileName || `${pkg.PackageName} ${index + 1}`}
                         className="gallery-small-img"
                       />
