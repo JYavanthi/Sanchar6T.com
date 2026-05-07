@@ -116,9 +116,12 @@ const SearchForm = () => {
         </h1>
 
         <div className="mx-auto flex max-w-5xl gap-4 overflow-x-auto px-4 pb-2 lg:justify-center md:justify-center min-[540px]:justify-center">
-          <div className="shrink-0 rounded-full bg-yellow-400 px-4 py-2 text-sm font-bold text-black md:px-7 md:py-3 md:text-lg">
+          {/* <div className="shrink-0 rounded-full bg-yellow-400 px-4 py-2 text-sm font-bold text-black md:px-7 md:py-3 md:text-lg">
             123 Buses found
-          </div>
+          </div> */}
+          <div className="shrink-0 rounded-full bg-yellow-400 px-4 py-2 text-sm font-bold text-black md:px-7 md:py-3 md:text-lg">
+  Buses Found
+</div>
           <div className="shrink-0 rounded-full bg-gray-200 px-4 py-2 text-sm md:px-7 md:py-3 md:text-lg text-[#273896] ">
             Ratings ⭐
           </div>
