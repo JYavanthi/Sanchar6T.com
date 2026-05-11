@@ -163,7 +163,7 @@ const Sidebar = () => {
         // NOT FILTERED DATA
 
         const response = await fetch(
-          `http://localhost:5000/api/bitla/schedules/${from}/${to}/${date}?from=${from}&to=${to}&date=${date}`
+          `https://sanchar6t.com/api/bitla/schedules/${from}/${to}/${date}?from=${from}&to=${to}&date=${date}`
         );
 
         const result = await response.json();
