@@ -51,16 +51,18 @@ const SearchForm = () => {
   const originCities = originData?.data?.data ?? [];
   const destinationCities = destData?.data?.data ?? [];
 
-//   const originCities =
-//   originData?.data?.data ||   // अगर nested है
-//   originData?.data ||         // अगर direct array है
-//   [];
+ const { data: busesResponse } = useQuery({
+  queryKey: ["bus-counts", urlFromId, urlToId, displayDate],
+  queryFn: () =>
+    BitlaRepository.getSchedules(
+      Number(urlFromId),
+      Number(urlToId),
+      displayDate
+    ),
+  enabled: Boolean(urlFromId && urlToId && displayDate),
+});
 
-// const destinationCities =
-//   destData?.data?.data ||
-//   destData?.data ||
-//   [];
-
+const busData = busesResponse?.data?.data || [];
   const originCity = useMemo(() => {
     return originCities.find((c: any) => c.id === Number(urlFromId)) || null;
   }, [urlFromId, originCities]);
@@ -115,24 +117,282 @@ const SearchForm = () => {
           {originCity?.name || "Departure"} ➝ {destCity?.name || "Destination"}
         </h1>
 
-        <div className="mx-auto flex max-w-5xl gap-4 overflow-x-auto px-4 pb-2 lg:justify-center md:justify-center min-[540px]:justify-center">
-          {/* <div className="shrink-0 rounded-full bg-yellow-400 px-4 py-2 text-sm font-bold text-black md:px-7 md:py-3 md:text-lg">
-            123 Buses found
-          </div> */}
-          <div className="shrink-0 rounded-full bg-yellow-400 px-4 py-2 text-sm font-bold text-black md:px-7 md:py-3 md:text-lg">
-  Buses Found
+<div className="mx-auto flex max-w-5xl gap-4 overflow-x-auto px-4 pb-2 lg:justify-center md:justify-center min-[540px]:justify-center">
+
+  {/* TOTAL */}
+  <div className="shrink-0 rounded-full bg-yellow-400 px-4 py-2 text-sm font-bold text-black md:px-7 md:py-3 md:text-lg">
+    {busData.length} Buses Found
+  </div>
+
+  {/* RATINGS */}
+  {/* <select
+    value={searchParams.get("rating") || ""}
+    onChange={(e) => {
+
+      const params =
+        new URLSearchParams(searchParams);
+
+      if (e.target.value) {
+        params.set(
+          "rating",
+          e.target.value
+        );
+      } else {
+        params.delete("rating");
+      }
+
+      navigate(`?${params.toString()}`, {
+        replace: true,
+      });
+
+    }}
+    className="shrink-0 rounded-full bg-gray-200 px-4 py-2 text-sm text-[#273896] md:px-7 md:py-3 md:text-lg outline-none"
+  >
+
+    <option value="">
+      Ratings ⭐
+    </option>
+
+    {[
+
+      ...new Set(
+
+        busData.map(
+          (b: any) =>
+            Number(
+              b.service_rating || 0
+            )
+        )
+
+      ),
+
+    ]
+      .filter(Boolean)
+      .sort((a: any, b: any) => b - a)
+      .map((rating: any) => (
+
+        <option
+          key={rating}
+          value={rating}
+        >
+
+          {rating}+ Rating (
+
+          {
+            busData.filter(
+              (b: any) =>
+                Number(
+                  b.service_rating || 0
+                ) >= rating
+            ).length
+          }
+
+          )
+
+        </option>
+      ))}
+
+  </select> */}
+
+  {/* PRICE */}
+  <select
+    value={searchParams.get("price") || ""}
+    onChange={(e) => {
+
+      const params =
+        new URLSearchParams(searchParams);
+
+      if (e.target.value) {
+        params.set(
+          "price",
+          e.target.value
+        );
+      } else {
+        params.delete("price");
+      }
+
+      navigate(`?${params.toString()}`, {
+        replace: true,
+      });
+
+    }}
+    className="shrink-0 rounded-full bg-white-200 px-4 py-2 text-sm text-[#273896] md:px-7 md:py-3 md:text-lg outline-none"
+  >
+
+    <option value="">
+      Price ₹
+    </option>
+
+    {[
+
+      ...new Set(
+
+        busData.map((b: any) => {
+
+          const price = Number(
+
+            String(
+              b.fare_str ||
+              b.show_fare_screen ||
+              b.fare ||
+              "0"
+            ).match(/[\d.]+/)?.[0]
+
+          );
+
+          return price;
+
+        })
+
+      ),
+
+    ]
+      .filter(
+        (price: any) =>
+          !isNaN(price) &&
+          price > 0
+      )
+      .sort((a: any, b: any) => a - b)
+      .map((price: any) => (
+
+        <option
+          key={price}
+          value={price}
+        >
+
+          ₹{price} (
+
+          {
+            busData.filter((b: any) => {
+
+              const busPrice = Number(
+
+                String(
+                  b.fare_str ||
+                  b.show_fare_screen ||
+                  b.fare ||
+                  "0"
+                ).match(/[\d.]+/)?.[0]
+
+              );
+
+              return (
+                busPrice === price
+              );
+
+            }).length
+          }
+
+          )
+
+        </option>
+      ))}
+
+  </select>
+
+  {/* DEPARTURE */}
+  <select
+    value={searchParams.get("departure") || ""}
+    onChange={(e) => {
+
+      const params =
+        new URLSearchParams(searchParams);
+
+      if (e.target.value) {
+        params.set(
+          "departure",
+          e.target.value
+        );
+      } else {
+        params.delete("departure");
+      }
+
+      navigate(`?${params.toString()}`, {
+        replace: true,
+      });
+
+    }}
+    className="shrink-0 rounded-full bg--200 px-4 py-2 text-sm text-[#273896] md:px-7 md:py-3 md:text-lg outline-none"
+  >
+
+    <option value="">
+      Departure Time
+    </option>
+
+    {[
+
+      ...new Set(
+
+        busData.map(
+          (b: any) =>
+            b.dep_time
+        )
+
+      ),
+
+    ]
+      .filter(Boolean)
+      .sort()
+      .map((time: any) => (
+
+        <option
+          key={time}
+          value={time}
+        >
+
+          {time} (
+
+          {
+            busData.filter(
+              (b: any) =>
+                b.dep_time === time
+            ).length
+          }
+
+          )
+
+        </option>
+      ))}
+
+  </select>
+
+  {/* CLEAR FILTER */}
+  <button
+    onClick={() => {
+
+      const params =
+        new URLSearchParams(
+          searchParams
+        );
+
+      params.delete("rating");
+      params.delete("price");
+      params.delete("departure");
+      params.delete("ac");
+      params.delete("seatType");
+
+      navigate(`?${params.toString()}`, {
+        replace: true,
+      });
+
+    }}
+    className="
+      shrink-0 rounded-full
+      bg-red-500
+      px-4 py-2
+      text-sm font-semibold
+      text-white
+      hover:bg-red-600
+      md:px-7 md:py-3
+      md:text-lg
+    "
+  >
+    Clear
+  </button>
+
 </div>
-          <div className="shrink-0 rounded-full bg-gray-200 px-4 py-2 text-sm md:px-7 md:py-3 md:text-lg text-[#273896] ">
-            Ratings ⭐
-          </div>
-          <div className="shrink-0 rounded-full bg-gray-200 px-4 py-2 text-sm md:px-7 md:py-3 md:text-lg text-[#273896]">
-            Price ₹
-          </div>
-          <div className="shrink-0 rounded-full bg-gray-200 px-4 py-2 text-sm md:px-7 md:py-3 md:text-lg text-[#273896]">
-            Departure Time
-          </div>
-        </div>
-      </div>
+
+     </div>
 
       {/* SEARCH BOX */}
       <div className="border-t bg-gray-200 p-3">

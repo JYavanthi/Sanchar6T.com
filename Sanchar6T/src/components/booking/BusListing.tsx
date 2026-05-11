@@ -765,9 +765,9 @@ const BusListing = (props: any) => {
           <div className="min-w-0 space-y-3">
             <div className="flex min-w-0 items-start justify-between gap-3">
               <div className="flex min-w-0 items-start gap-3">
-                <div className="shrink-0 rounded bg-green-600 px-2 py-1 text-xs font-bold text-white min-[1051px]:px-3 min-[1051px]:text-sm">
+                {/* <div className="shrink-0 rounded bg-green-600 px-2 py-1 text-xs font-bold text-white min-[1051px]:px-3 min-[1051px]:text-sm">
                   4.3
-                </div>
+                </div> */}
 
                 <div className="min-w-0">
                   <h3 className="truncate text-base font-bold text-gray-900 min-[1051px]:text-base xl:text-lg">
