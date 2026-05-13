@@ -185,7 +185,7 @@
 import { useEffect, useState } from "react";
 import { Calendar, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
+import { API_URLS } from "../API-URLS";
 type PackageItem = {
   PackageID: number;
   PackageName: string;
@@ -201,7 +201,6 @@ type PackageItem = {
   MediaId?: number | null;
 };
 
-const API_BASE_URL = "http://localhost:5000/api";
 
 const PackagesSection = () => {
   const navigate = useNavigate();
@@ -209,7 +208,7 @@ const PackagesSection = () => {
   const [packages, setPackages] = useState<PackageItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
+const { API_BASE_URL } = API_URLS;
   useEffect(() => {
     fetchPackages();
   }, []);
